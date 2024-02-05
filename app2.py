@@ -1,7 +1,6 @@
 import streamlit as st
 import numpy as np
 import pickle
-import temp2
 
 with open('model.pickle', 'rb') as file:
     model = pickle.load(file)
@@ -15,10 +14,7 @@ def adClick_predict(input_data):
     input_data_as_numpy_array = np.asarray((input_data))
     input_data_reshaped = convertedData(input_data_as_numpy_array).reshape(1, -1)
 
-    print(input_data_reshaped)
-
     prediction = model.predict(input_data_reshaped)
-    print(prediction)
 
     if prediction[0] == 1:
         return 'Clicked'
